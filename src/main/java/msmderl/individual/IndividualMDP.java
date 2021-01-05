@@ -23,6 +23,13 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
     private IndividualState curState;
     private DiscreteSpace actionSpace;
     private ObservationSpace<IndividualState> observationSpace;
+    private int nanoentities;
+
+    private static final int NON_MATCH_PENALTY = 10;
+    private static final int MATCH_REWARD = 20;
+    private static final int CONTEXT_BOUND_REWARD = 20;
+    private static final int CONTEXT_BOUND_PENALTY = 10;
+    private static final int OVERFILL_PENALTY = 5;
 
     public IndividualMDP(Microservice[] microservices, Method[] methods) {
         this.microservices = microservices;
@@ -32,6 +39,7 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
 
     private void init() {
         step = 0;
+        nanoentities = nanoentitiesNum();
         this.assignedMicroservice = new Microservice[methods.length];
         this.methodsInServices = new int[microservices.length];
         this.curState = new IndividualState(microservices, methods[0], methodsInServices, microservices.length);
@@ -97,13 +105,13 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
             if (i == action) {
                 for (String ne : microservice.getNanoentities()) {
                     if (methodNE.contains(ne)) {
-                        reward += 20;
+                        reward += MATCH_REWARD;
                     }
                 }
             } else {
                 for (String ne : microservice.getNanoentities()) {
                     if (methodNE.contains(ne)) {
-                        reward -= 10;
+                        reward -= NON_MATCH_PENALTY;
                     }
                 }
             }
@@ -113,13 +121,13 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
         serviceNE.addAll(Arrays.asList(microservice.getNanoentities()));
         for (String ne : methodNE) {
             if (serviceNE.contains(ne)) {
-                reward += 20;
+                reward += CONTEXT_BOUND_REWARD;
             } else {
-                reward -= 10;
+                reward -= CONTEXT_BOUND_PENALTY;
             }
         }
-        if (methodsInServices[action] >= methods.length / microservices.length) {
-            reward -= 5;
+        if (methodsInServices[action] >= microservice.getNanoentities().length / nanoentities) {
+            reward -= OVERFILL_PENALTY;
         }
         methodsInServices[action]++;
         step++;
@@ -131,5 +139,13 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
         }
         curState = new IndividualState(microservices, nextMethod, methodsInServices, microservices.length);
         return new StepReply<>(curState, reward, isDone(), null);
+    }
+
+    public int nanoentitiesNum() {
+        HashSet<String> entites = new HashSet<>();
+        for (Microservice m : microservices) {
+            entites.addAll(Arrays.asList(m.getNanoentities()));
+        }
+        return entites.size();
     }
 }
