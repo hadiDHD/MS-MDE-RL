@@ -1,0 +1,107 @@
+{
+  "services": [
+    {
+      "nanoentities": [
+        "UserAccount.accountCustomer"
+      ],
+      "name": "G",
+      "id": "G"
+    },
+    {
+      "nanoentities": [
+        "CustomerAddressChange.changedAddress"
+      ],
+      "name": "I",
+      "id": "I"
+    },
+    {
+      "nanoentities": [
+        "Address.street",
+        "Address.city",
+        "Customer.firstname",
+        "Customer.addresses",
+        "Customer.lastname"
+      ],
+      "name": "B",
+      "id": "B"
+    },
+    {
+      "nanoentities": [
+        "Document.template",
+        "Template.templateId",
+        "PrintingJob.printingId",
+        "PrintingJob.template",
+        "Template.templateName",
+        "Document.source",
+        "PrintingJob.document"
+      ],
+      "name": "H",
+      "id": "H"
+    },
+    {
+      "nanoentities": [
+        "UserAccount.username"
+      ],
+      "name": "A",
+      "id": "A"
+    },
+    {
+      "nanoentities": [
+        "Debt.paymentDate",
+        "Dunning.dunningNr",
+        "Dunning.paymentDeadline",
+        "Debt.paymentDeadline",
+        "Dunning.dunningDate",
+        "Debt.debtNr",
+        "Debt.price",
+        "Debt.status",
+        "Debt.policy",
+        "Debt.dunnigs",
+        "Debt.creationDate",
+        "Dunning.debt"
+      ],
+      "name": "D",
+      "id": "D"
+    },
+    {
+      "nanoentities": [
+        "CustomerRiskFactor.risks",
+        "Risk.likelihood",
+        "CustomerRiskFactor.client",
+        "Risk.risk",
+        "CustomerRiskFactor.totalRiskFactor"
+      ],
+      "name": "E",
+      "id": "E"
+    },
+    {
+      "nanoentities": [
+        "CustomerAddressChange.issuer"
+      ],
+      "name": "C",
+      "id": "C"
+    },
+    {
+      "nanoentities": [
+        "Offer.price",
+        "Offer.products",
+        "ProductId.productId",
+        "Policy.contract",
+        "Offer.offerId",
+        "Product.identifier",
+        "Policy.price",
+        "Contract.products",
+        "Offer.client",
+        "ContractId.contractId",
+        "Contract.client",
+        "Product.productName",
+        "Policy.policyNr",
+        "Contract.identifier"
+      ],
+      "name": "F",
+      "id": "F"
+    }
+  ],
+  "relations": [],
+  "useCaseResponsibility": {}
+}

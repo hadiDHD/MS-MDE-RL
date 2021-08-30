@@ -1,0 +1,103 @@
+{
+"aggregates":[
+  {
+	"name": "ClaimSelfService",
+	"nanoentities":["ClaimSubmission.claim" , "ClaimSubmission.user"]
+  },
+  {
+	"name": "Claims",
+	"nanoentities":["Claim.customer" , "Claim.requestDocument" , "AbstractClaimEvent.timestamp" , "Claim.isAssessed" , "AbstractClaimCommand.claim" , "Claim.isComplete" , "AbstractClaimEvent.claim" , "Claim.claimState" , "CheckInsurance.policies" , "Claim.claimId" , "Claim.description"]
+  },
+  {
+	"name": "Payment",
+	"nanoentities":["AbstractNotificationEvent.timestamp" , "Payment.claim" , "Payment.paymentState" , "AbstractNotificationCommand.payment" , "AbstractNotificationEvent.payment"]
+  },
+  {
+	"name": "Notification",
+	"nanoentities":["CustomerNotified.timestamp" , "Notification.claim"]
+  },
+  {
+	"name": "insurance_quote_requests",
+	"nanoentities":["InsuranceQuoteRequestDto.statusHistory" , "InsuranceQuoteRequestDto.id" , "InsuranceQuoteRequestDto.customerInfo" , "InsuranceQuoteRequestDto.insuranceQuote" , "InsuranceQuoteRequestDto.insuranceOptions" , "InsuranceQuoteRequestDto.date" , "InsuranceQuoteRequestDto.policyId"]
+  },
+  {
+	"name": "customers",
+	"nanoentities":["PaginatedCustomerResponseDto.size" , "customers_PolicyDto.policyLimit" , "PaginatedCustomerResponseDto.links" , "customers_PolicyDto.customer" , "CustomerDto.customerId" , "CustomerDto.customerProfile" , "customers_PolicyDto.insuringAgreement" , "PaginatedCustomerResponseDto.customers" , "CustomerIdDto.id" , "CustomerDto.links" , "customers_PolicyDto.deductible" , "customers_PolicyDto.policyPeriod" , "customers_PolicyDto.creationDate" , "PaginatedCustomerResponseDto.offset" , "PaginatedCustomerResponseDto.limit" , "customers_PolicyDto.policyType" , "customers_PolicyDto.insurancePremium" , "customers_PolicyDto.policyId" , "customers_PolicyDto.expandable" , "customers_PolicyDto.links" , "PaginatedCustomerResponseDto.filter"]
+  },
+  {
+	"name": "policies",
+	"nanoentities":["CreatePolicyRequestDto.insurancePremium" , "PolicyDto.policyType" , "CreatePolicyRequestDto.policyLimit" , "PolicyDto.policyId" , "PolicyDto.links" , "PolicyDto.policyPeriod" , "PaginatedPolicyResponseDto.offset" , "PolicyDto.creationDate" , "PaginatedPolicyResponseDto.size" , "CreatePolicyRequestDto.customerId" , "CreatePolicyRequestDto.insuringAgreement" , "PolicyId.id" , "PolicyDto.deductible" , "PaginatedPolicyResponseDto.links" , "PolicyId.serialVersionUID" , "PaginatedPolicyResponseDto.policies" , "PolicyDto.insurancePremium" , "PaginatedPolicyResponseDto.limit" , "PolicyDto.customer" , "CreatePolicyRequestDto.policyPeriod" , "CreatePolicyRequestDto.deductible" , "PolicyDto.policyLimit" , "CreatePolicyRequestDto.policyType" , "PolicyDto.expandable" , "PolicyDto.insuringAgreement"]
+  },
+  {
+	"name": "CustomerManagement_customers",
+	"nanoentities":["CustomerManagement_customers_CustomerId.id" , "CustomerManagement_customers_CustomerDto.customerId" , "CustomerManagement_customers_CustomerId.serialVersionUID" , "CustomerProfileDto.moveHistory" , "CustomerProfileDto.email" , "CustomerManagement_customers_PaginatedCustomerResponseDto.size" , "CustomerManagement_customers_CustomerDto.links" , "CustomerManagement_customers_PaginatedCustomerResponseDto.links" , "CustomerManagement_customers_PaginatedCustomerResponseDto.filter" , "CustomerManagement_customers_PaginatedCustomerResponseDto.limit" , "CustomerProfileDto.birthday" , "CustomerManagement_customers_PaginatedCustomerResponseDto.offset" , "CustomerProfileDto.lastname" , "CustomerProfileDto.currentAddress" , "CustomerProfileDto.firstname" , "CustomerManagement_customers_CustomerDto.customerProfile" , "CustomerManagement_customers_PaginatedCustomerResponseDto.customers" , "CustomerProfileDto.phoneNumber"]
+  },
+  {
+	"name": "notifications",
+	"nanoentities":["NotificationDto.username" , "NotificationDto.customerId" , "NotificationDto.count"]
+  },
+  {
+	"name": "interaction_logs",
+	"nanoentities":["interaction_logs_CustomerId.serialVersionUID" , "interaction_logs_CustomerId.id" , "InteractionLogAggregateRoot.customerId" , "InteractionLogAggregateRoot.interactions" , "InteractionLogAggregateRoot.lastAcknowledgedInteractionId" , "InteractionLogAggregateRoot.username"]
+  },
+  {
+	"name": "CustomerSelfService_insurance_quote_requests",
+	"nanoentities":["CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.insuranceOptions" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.id" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.insuranceQuote" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.policyId" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.statusHistory" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.customerInfo" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.date"]
+  },
+  {
+	"name": "CustomerSelfService_cities",
+	"nanoentities":["CustomerSelfService_cities_CitiesResponseDto.cities"]
+  },
+  {
+	"name": "user",
+	"nanoentities":["UserResponseDto.email" , "UserResponseDto.customerId"]
+  },
+  {
+	"name": "CustomerSelfService_customers",
+	"nanoentities":["CustomerSelfService_customers_AddressDto.postalCode" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.customerInfo" , "CustomerSelfService_customers_CustomerDto.customerId" , "CustomerSelfService_customers_CustomerDto.customerProfile" , "CustomerSelfService_customers_CustomerDto.links" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.date" , "CustomerSelfService_customers_CustomerId.id" , "CustomerSelfService_customers_AddressDto.city" , "CustomerSelfService_customers_CustomerId.serialVersionUID" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.policyId" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.statusHistory" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.insuranceQuote" , "CustomerSelfService_customers_AddressDto.streetAddress" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.insuranceOptions" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.id"]
+  },
+  {
+	"name": "cities",
+	"nanoentities":["CitiesResponseDto.cities"]
+  },
+  {
+	"name": "CustomerCore_customers",
+	"nanoentities":["CustomerProfileUpdateRequestDto.postalCode" , "CustomerResponseDto.firstname" , "CustomerCore_customers_PaginatedCustomerResponseDto.customers" , "CustomerResponseDto.streetAddress" , "CustomerProfileUpdateRequestDto.phoneNumber" , "CustomerResponseDto.customerId" , "CustomerCore_customers_PaginatedCustomerResponseDto.offset" , "CustomerProfileUpdateRequestDto.lastname" , "CustomerCore_customers_PaginatedCustomerResponseDto.links" , "AddressDto.postalCode" , "CustomerCore_customers_PaginatedCustomerResponseDto.limit" , "CustomerResponseDto.birthday" , "AddressDto.city" , "CustomerCore_customers_PaginatedCustomerResponseDto.size" , "CustomerProfileUpdateRequestDto.birthday" , "CustomerResponseDto.postalCode" , "CustomerResponseDto.moveHistory" , "CustomerProfileUpdateRequestDto.city" , "CustomerId.serialVersionUID" , "CustomersResponseDto.links" , "CustomerProfileUpdateRequestDto.streetAddress" , "AddressDto.streetAddress" , "CustomersResponseDto.customers" , "CustomerId.id" , "CustomerProfileUpdateRequestDto.firstname" , "CustomerResponseDto.city" , "CustomerResponseDto.links" , "CustomerProfileUpdateRequestDto.email" , "CustomerResponseDto.phoneNumber" , "CustomerResponseDto.email" , "CustomerResponseDto.lastname" , "CustomerCore_customers_PaginatedCustomerResponseDto.filter"]
+  },
+  {
+	"name": "CustomerRelationshipManagement",
+	"nanoentities":["AbstractDomainEvent.timestamp" , "CustomerVerifiedEvent.customer" , "AddressUpdatedEvent.address" , "AddressUpdatedEvent.customer" , "RecordAddressChange.newAddress" , "RecordAddressChange.changeDate"]
+  },
+  {
+	"name": "CustomerAggregate",
+	"nanoentities":["Customer.firstName" , "Customer.customerId" , "Customer.addresses" , "CustomerId.uniqueCustomerId" , "Customer.lastName"]
+  },
+  {
+	"name": "CQRS_CommonInfrastructure",
+	"nanoentities":["AbstractDomainEvent.timestamp" , "EventSequence.events"]
+  }
+],
+"predefinedServices":[
+  {
+	"name": "ClaimsManagement",
+	"nanoentities":["AbstractNotificationEvent.timestamp" , "Payment.claim" , "AbstractClaimEvent.timestamp" , "Claim.isAssessed" , "Claim.isComplete" , "AbstractClaimEvent.claim" , "Claim.claimState" , "AbstractNotificationCommand.payment" , "CheckInsurance.policies" , "Notification.claim" , "Claim.description" , "AbstractNotificationEvent.payment" , "ClaimSubmission.claim" , "ClaimSubmission.user" , "Claim.customer" , "Claim.requestDocument" , "Payment.paymentState" , "CustomerNotified.timestamp" , "AbstractClaimCommand.claim" , "Claim.claimId"]
+  },
+  {
+	"name": "PolicyManagement",
+	"nanoentities":["CreatePolicyRequestDto.insurancePremium" , "InsuranceQuoteRequestDto.insuranceQuote" , "PolicyDto.policyId" , "PolicyDto.links" , "PaginatedPolicyResponseDto.offset" , "customers_PolicyDto.policyPeriod" , "PolicyDto.creationDate" , "PaginatedPolicyResponseDto.size" , "InsuranceQuoteRequestDto.customerInfo" , "PaginatedCustomerResponseDto.limit" , "CreatePolicyRequestDto.customerId" , "CreatePolicyRequestDto.insuringAgreement" , "customers_PolicyDto.links" , "customers_PolicyDto.customer" , "PaginatedPolicyResponseDto.links" , "PolicyId.serialVersionUID" , "customers_PolicyDto.insuringAgreement" , "InsuranceQuoteRequestDto.policyId" , "PaginatedPolicyResponseDto.limit" , "CustomerIdDto.id" , "CustomerDto.links" , "CreatePolicyRequestDto.policyPeriod" , "PolicyDto.policyLimit" , "PolicyDto.expandable" , "PaginatedCustomerResponseDto.offset" , "PolicyDto.insuringAgreement" , "InsuranceQuoteRequestDto.date" , "customers_PolicyDto.policyId" , "customers_PolicyDto.policyLimit" , "PolicyDto.policyType" , "CreatePolicyRequestDto.policyLimit" , "InsuranceQuoteRequestDto.insuranceOptions" , "PolicyDto.policyPeriod" , "customers_PolicyDto.creationDate" , "PolicyId.id" , "customers_PolicyDto.expandable" , "InsuranceQuoteRequestDto.statusHistory" , "InsuranceQuoteRequestDto.id" , "PaginatedCustomerResponseDto.size" , "PolicyDto.deductible" , "PaginatedCustomerResponseDto.links" , "CustomerDto.customerId" , "CustomerDto.customerProfile" , "PaginatedPolicyResponseDto.policies" , "PolicyDto.insurancePremium" , "PaginatedCustomerResponseDto.customers" , "PolicyDto.customer" , "CreatePolicyRequestDto.deductible" , "CreatePolicyRequestDto.policyType" , "customers_PolicyDto.deductible" , "customers_PolicyDto.policyType" , "customers_PolicyDto.insurancePremium" , "PaginatedCustomerResponseDto.filter"]
+  },
+  {
+	"name": "CustomerManagement",
+	"nanoentities":["CustomerManagement_customers_CustomerId.id" , "CustomerManagement_customers_CustomerDto.customerId" , "CustomerManagement_customers_CustomerId.serialVersionUID" , "CustomerProfileDto.moveHistory" , "CustomerManagement_customers_CustomerDto.links" , "InteractionLogAggregateRoot.customerId" , "InteractionLogAggregateRoot.interactions" , "NotificationDto.username" , "CustomerProfileDto.currentAddress" , "CustomerManagement_customers_CustomerDto.customerProfile" , "CustomerManagement_customers_PaginatedCustomerResponseDto.customers" , "interaction_logs_CustomerId.id" , "CustomerProfileDto.email" , "CustomerManagement_customers_PaginatedCustomerResponseDto.size" , "CustomerManagement_customers_PaginatedCustomerResponseDto.links" , "NotificationDto.customerId" , "CustomerManagement_customers_PaginatedCustomerResponseDto.filter" , "CustomerManagement_customers_PaginatedCustomerResponseDto.limit" , "CustomerProfileDto.birthday" , "InteractionLogAggregateRoot.lastAcknowledgedInteractionId" , "NotificationDto.count" , "interaction_logs_CustomerId.serialVersionUID" , "CustomerManagement_customers_PaginatedCustomerResponseDto.offset" , "CustomerProfileDto.lastname" , "CustomerProfileDto.firstname" , "CustomerProfileDto.phoneNumber" , "InteractionLogAggregateRoot.username"]
+  },
+  {
+	"name": "CustomerSelfService",
+	"nanoentities":["CustomerSelfService_cities_CitiesResponseDto.cities" , "UserResponseDto.email" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.customerInfo" , "CustomerSelfService_customers_CustomerDto.customerId" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.insuranceQuote" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.customerInfo" , "UserResponseDto.customerId" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.date" , "CustomerSelfService_customers_CustomerId.id" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.policyId" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.statusHistory" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.policyId" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.insuranceQuote" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.insuranceOptions" , "CustomerSelfService_customers_InsuranceQuoteRequestDto.id" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.date" , "CustomerSelfService_customers_AddressDto.postalCode" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.id" , "CustomerSelfService_customers_CustomerDto.customerProfile" , "CustomerSelfService_customers_CustomerDto.links" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.statusHistory" , "CustomerSelfService_insurance_quote_requests_InsuranceQuoteRequestDto.insuranceOptions" , "CustomerSelfService_customers_AddressDto.city" , "CustomerSelfService_customers_CustomerId.serialVersionUID" , "CustomerSelfService_customers_AddressDto.streetAddress"]
+  },
+  {
+	"name": "CustomerCore",
+	"nanoentities":["CustomerProfileUpdateRequestDto.postalCode" , "CustomerResponseDto.firstname" , "CustomerCore_customers_PaginatedCustomerResponseDto.customers" , "CustomerResponseDto.streetAddress" , "CustomerProfileUpdateRequestDto.phoneNumber" , "AddressUpdatedEvent.address" , "CustomerResponseDto.customerId" , "CustomerCore_customers_PaginatedCustomerResponseDto.offset" , "CustomerProfileUpdateRequestDto.lastname" , "Customer.addresses" , "CustomerCore_customers_PaginatedCustomerResponseDto.links" , "CitiesResponseDto.cities" , "AddressDto.postalCode" , "CustomerCore_customers_PaginatedCustomerResponseDto.limit" , "RecordAddressChange.changeDate" , "CustomerResponseDto.birthday" , "AddressDto.city" , "CustomerCore_customers_PaginatedCustomerResponseDto.size" , "CustomerProfileUpdateRequestDto.birthday" , "CustomerResponseDto.postalCode" , "CustomerResponseDto.moveHistory" , "CustomerProfileUpdateRequestDto.city" , "CustomerVerifiedEvent.customer" , "CustomerId.serialVersionUID" , "AddressUpdatedEvent.customer" , "CustomersResponseDto.links" , "CustomerProfileUpdateRequestDto.streetAddress" , "Customer.firstName" , "AddressDto.streetAddress" , "CustomersResponseDto.customers" , "Customer.customerId" , "CustomerId.id" , "CustomerProfileUpdateRequestDto.firstname" , "Customer.lastName" , "AbstractDomainEvent.timestamp" , "CustomerResponseDto.city" , "CustomerResponseDto.links" , "CustomerProfileUpdateRequestDto.email" , "CustomerResponseDto.phoneNumber" , "CustomerResponseDto.email" , "RecordAddressChange.newAddress" , "CustomerResponseDto.lastname" , "CustomerCore_customers_PaginatedCustomerResponseDto.filter" , "CustomerId.uniqueCustomerId" , "EventSequence.events"]
+  }
+],
+"useCases": []
+}

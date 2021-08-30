@@ -1,0 +1,38 @@
+{
+  "services": [
+    {
+      "nanoentities": [
+        "Article.articleName",
+        "Article.articleIdentifier",
+        "Article.price",
+        "Article.serial"
+      ],
+	  "name": "B",
+      "id": "B"
+    },
+    {
+      "nanoentities": [
+        "Booking.bookingIdentifier",
+        "Booking.bookingState",
+        "Booking.totalPrice",
+        "Booking.bookingDate",
+        "Booking.paymentDate"
+      ],
+	  "name": "C",
+      "id": "C"
+    },
+    {
+      "nanoentities": [
+        "Customer.accountNr",
+        "Customer.customerIdentifier",
+        "Customer.city",
+        "Customer.firstname",
+        "Customer.street",
+        "Customer.creditCard",
+        "Customer.name"
+      ],
+	  "name": "A",
+      "id": "A"
+    }
+  ]
+}

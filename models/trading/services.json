@@ -1,0 +1,50 @@
+{
+  "services": [
+    {
+      "nanoentities": [
+        "Order.posted",
+        "Order.executed",
+        "Order.amount",
+        "Instruction.instructedTime",
+        "PaymentInfo.cashAccount",
+        "Order.expires",
+        "Position.balance",
+        "Order.triggerPrice",
+        "Recommendation.description",
+        "Stock.stockName",
+        "Account.number",
+        "Order.type"
+      ],
+      "name": "B",
+      "id": "B"
+    },
+    {
+      "nanoentities": [
+        "Price.currency",
+        "Price.price",
+        "Price.dateTime"
+      ],
+      "name": "D",
+      "id": "D"
+    },
+    {
+      "nanoentities": [
+        "News.image",
+        "News.title",
+        "News.text",
+        "Stock.identifier"
+      ],
+      "name": "C",
+      "id": "C"
+    },
+    {
+      "nanoentities": [
+        "Company.companyName",
+        "AccountOwner.address",
+        "NaturalPerson.name"
+      ],
+      "name": "A",
+      "id": "A"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+"methods":[
+  {
+	"name": "Customers",
+	"nanoentities":[
+        "Address.street" , "Address.city" , "Customer.firstname" , "Customer.addresses" , "Customer.lastname"
+	]
+  },
+  {
+	"name": "CustomerFrontend",
+	"nanoentities":["CustomerAddressChange.issuer" , "CustomerAddressChange.changedAddress"]
+  },
+  {
+	"name": "Acounts",
+	"nanoentities":["UserAccount.username" , "UserAccount.accountCustomer"]
+  },
+  {
+	"name": "Printing",
+	"nanoentities":["Document.template" , "PrintingJob.printingId" , "PrintingJob.template" , "Document.source" , "PrintingJob.document"]
+  },
+  {
+	"name": "Templating",
+	"nanoentities":["Template.templateId" , "Template.templateName"]
+  },
+  {
+	"name": "Offers",
+	"nanoentities":["Offer.price" , "Offer.products" , "Offer.client" , "Offer.offerId"]
+  },
+  {
+	"name": "Products",
+	"nanoentities":["Product.identifier" , "ProductId.productId" , "Product.productName"]
+  },
+  {
+	"name": "Contract",
+	"nanoentities":["Policy.price" , "Contract.products" , "ContractId.contractId" , "Contract.client" , "Policy.policyNr" , "Policy.contract" , "Contract.identifier"]
+  },
+  {
+	"name": "Risks",
+	"nanoentities":["CustomerRiskFactor.risks" , "Risk.likelihood" , "CustomerRiskFactor.client" , "Risk.risk" , "CustomerRiskFactor.totalRiskFactor"]
+  },
+  {
+	"name": "Debts",
+	"nanoentities":["Debt.paymentDate" , "Dunning.dunningNr" , "Debt.paymentDeadline" , "Dunning.paymentDeadline" , "Dunning.dunningDate" , "Debt.debtNr" , "Debt.price" , "Debt.status" , "Debt.policy" , "Debt.creationDate" , "Debt.dunnigs" , "Dunning.debt"]
+  }
+]
+}

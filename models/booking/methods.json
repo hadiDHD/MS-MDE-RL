@@ -1,0 +1,24 @@
+{
+  "methods": [
+    {
+      "name": "createCustomer",
+      "nanoentities": ["Customer.firstname","Customer.name","Customer.street","Customer.city","Customer.creditCard","Customer.accountNr", "Customer.customerIdentifier"]
+    },
+    {
+      "name": "createBooking",
+      "nanoentities": ["Article.price","Booking.bookingDate","Booking.paymentDate","Booking.totalPrice","Booking.bookingState","Booking.bookingIdentifier"]
+    },
+    {
+      "name": "createArticle",
+      "nanoentities": ["Article.articleName", "Article.price", "Article.serial", "Article.articleIdentifier"]
+    },
+    {
+      "name": "searchArticles",
+      "nanoentities": ["Article.articleName", "Article.price", "Article.serial"]
+    },
+    {
+      "name": "payBooking",
+      "nanoentities": ["Customer.creditCard", "Customer.customerIdentifier", "Article.articleIdentifier","Booking.paymentDate", "Booking.bookingState"]
+    }
+  ]
+}

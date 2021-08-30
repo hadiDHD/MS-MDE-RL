@@ -1,0 +1,71 @@
+{
+  "methods": [
+    {
+      "name": "ViewTracking",
+      "nanoentities": [
+        "Cargo.trackingId", "HandlingEvent.type", "HandlingEvent.location",
+		"HandlingEvent.completionTime", "Delivery.transportStatus",
+		"Delivery.estimatedArrivalTime", "Delivery.misdirected", "Voyage.voyageNumber",
+		"RouteSpecification.destination"
+      ]
+    },
+    {
+      "name": "ViewCargos",
+      "nanoentities": [
+        "Cargo.trackingId", "RouteSpecification.destination", "RouteSpecification.arrivalDeadline",
+		"Delivery.routingStatus", "Itinerary.itineraryNumber"
+      ]
+    },
+    {
+      "name": "BookCargo",
+      "nanoentities": [
+        "Cargo.trackingId", "RouteSpecification.origin", "RouteSpecification.arrivalDeadline",
+		"RouteSpecification.destination", "Location.unLocode"
+
+      ]
+    },
+    {
+      "name": "ChangeCargoDestination",
+      "nanoentities": [
+        "RouteSpecification.destination", "Cargo.trackingId", "RouteSpecification.destination"
+      ]
+    },
+    {
+      "name": "RouteCargo",
+      "nanoentities": [
+        "Itinerary.itineraryNumber", "Leg.loadLocation",
+		"Leg.unloadLocation", "Leg.loadTime", "Leg.unloadTime",
+        "Cargo.trackingId", "RouteSpecification.destination", "RouteSpecification.origin", "RouteSpecification.arrivalDeadline", 
+		"Location.unLocode", "Voyage.voyageNumber", "CarrierMovement.departureLocation",
+		"CarrierMovement.arrivalLocation", "CarrierMovement.departureTime", "CarrierMovement.arrivalTime"
+      ]
+    },
+    {
+      "name": "Create Location",
+      "nanoentities": [
+		"Location.unLocode", "Location.name"
+      ]
+    },
+    {
+      "name": "Create Voyage",
+      "nanoentities": [
+        "Voyage.voyageNumber"
+      ]
+    },
+    {
+      "name": "Add CarrierMovement",
+      "nanoentities": [
+        "CarrierMovement.departureLocation", "CarrierMovement.arrivalLocation", "CarrierMovement.departureTime",
+		"CarrierMovement.arrivalTime", "Voyage.voyageNumber"
+      ]
+    },
+    {
+      "name": "Handle Cargo Event",
+      "nanoentities": [
+        "HandlingEvent.type", "HandlingEvent.completionTime", "HandlingEvent.registrationTime",
+		"HandlingEvent.location", "Delivery.transportStatus", "Delivery.misdirected", "Delivery.estimatedArrivalTime",
+		"Delivery.isUnloadedAtDestination", "Delivery.routingStatus", "Voyage.voyageNumber", "Cargo.trackingId"
+      ]
+    }
+  ]
+}

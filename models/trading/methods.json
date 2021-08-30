@@ -1,0 +1,44 @@
+{
+  "methods": [
+    {
+      "name": "PostOrder",
+      "nanoentities": ["Account.number", "Stock.identifier", "Stock.stockName","Order.posted","Order.expires","Order.triggerPrice","Order.executed","Order.type","Order.amount"]
+    },
+    {
+      "name": "InstructOrder",
+      "nanoentities": ["PaymentInfo.cashAccount","Instruction.instructedTime", "Order.executed", "Position.balance"]
+    },
+    {
+      "name": "ImportPrice",
+      "nanoentities": ["Order.triggerPrice", "Stock.identifier","Price.dateTime","Price.price","Price.currency"]
+    },
+    {
+      "name": "ReadNews",
+      "nanoentities": ["Stock.identifier", "News.title", "News.text", "News.image"]
+    },
+    {
+      "name": "ImportNews",
+      "nanoentities": ["Stock.identifier","News.title", "News.text", "News.image"]
+    },
+    {
+      "name": "View Recommendations",
+      "nanoentities": ["Account.number","Recommendation.description","Stock.identifier","Stock.stockName"]
+    },
+    {
+      "name": "SuggestRecommendations",
+      "nanoentities": ["Account.number","Stock.identifier","Stock.stockName","Position.balance","Recommendation.description"]
+    },
+    {
+      "name": "CreateAccount",
+      "nanoentities": ["AccountOwner.address","NaturalPerson.name","Company.companyName","Account.number"]
+    },
+    {
+      "name": "CreateAccountOwner",
+      "nanoentities": ["AccountOwner.address","NaturalPerson.name","Company.companyName"]
+    },
+    {
+      "name": "viewPortfolio",
+      "nanoentities": ["Account.number","Position.balance","Stock.identifier", "Stock.stockName", "Order.triggerPrice", "Order.amount", "Order.posted", "Order.expires", "Order.executed", "Order.type"]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "services": [
+    {
+      "id": "1",
+      "name": "Voyage Service",
+      "nanoentities": [
+        "Voyage.voyageNumber",
+		"CarrierMovement.departureLocation",
+		"CarrierMovement.arrivalLocation",
+		"CarrierMovement.departureTime",
+		"CarrierMovement.arrivalTime"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Location Service",
+      "nanoentities": [
+        "Location.name",
+		"Location.unLocode"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Planning Service",
+      "nanoentities": [
+        "Cargo.trackingId",
+		"RouteSpecification.origin",
+		"RouteSpecification.destination",
+		"RouteSpecification.arrivalDeadline",
+		"Itinerary.itineraryNumber",
+		"Leg.loadLocation",
+		"Leg.unloadLocation",
+		"Leg.loadTime",
+		"Leg.unloadTime",
+		"Delivery.estimatedArrivalTime",
+		"Delivery.routingStatus"
+      ]
+    },
+	{
+      "id": "4",
+      "name": "Tracking Service",
+      "nanoentities": [
+        "HandlingEvent.type",
+		"HandlingEvent.completionTime",
+		"HandlingEvent.registrationTime",
+		"HandlingEvent.location",
+		"Delivery.transportStatus",
+		"Delivery.misdirected",
+		"Delivery.isUnloadedAtDestination"
+      ]
+    }
+  ]
+}
