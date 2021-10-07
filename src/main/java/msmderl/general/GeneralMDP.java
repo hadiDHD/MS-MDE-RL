@@ -2,7 +2,7 @@ package msmderl.general;
 
 import msmderl.data.Method;
 import msmderl.data.Microservice;
-import msmderl.generator.ModelGenerator;
+import msmderl.modelgenerator.ModelGenerator;
 import org.deeplearning4j.gym.StepReply;
 import org.deeplearning4j.rl4j.mdp.MDP;
 import org.deeplearning4j.rl4j.space.ArrayObservationSpace;
