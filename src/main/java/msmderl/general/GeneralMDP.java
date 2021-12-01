@@ -27,9 +27,12 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
     private boolean isTraining;
     private int accReward = 0;
     private int nanoentities;
-    public static final int MAX_MICROSERVICE = 4;
-    public static final int MAX_NANO_ENTITY = 10;
-    public static final int MAX_METHOD = 25;
+    public static final int MAX_MICROSERVICE = 9;
+    public static final int MAX_NANO_ENTITY = MAX_MICROSERVICE * 10;
+    public static final int MAX_METHOD = MAX_MICROSERVICE * 10;
+    public static final int MIN_MICROSERVICE = MAX_MICROSERVICE;
+    public static final int MIN_NANO_ENTITY = 1;
+    public static final int MIN_METHOD = 1;
 
     private static final int NON_MATCH_PENALTY = 10;
     private static final int MATCH_REWARD = 20;
@@ -39,9 +42,9 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
 
     public GeneralMDP() {
         isTraining = true;
-        ModelGenerator modelGenerator = new ModelGenerator(MAX_MICROSERVICE, MAX_MICROSERVICE,
-                1, MAX_NANO_ENTITY,
-                1, MAX_METHOD);
+        ModelGenerator modelGenerator = new ModelGenerator(MIN_MICROSERVICE, MAX_MICROSERVICE,
+                MIN_NANO_ENTITY, MAX_NANO_ENTITY,
+                MIN_METHOD, MAX_METHOD);
         this.microservices = modelGenerator.generateServiceCutterModel().getServices();
         this.methods = modelGenerator.generateMethodModel().getMethods();
         init();
@@ -111,9 +114,9 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
         if (!isTraining) {
             return curState;
         }
-        ModelGenerator modelGenerator = new ModelGenerator(MAX_MICROSERVICE, MAX_MICROSERVICE,
-                1, MAX_NANO_ENTITY,
-                1, MAX_METHOD);
+        ModelGenerator modelGenerator = new ModelGenerator(MIN_MICROSERVICE, MAX_MICROSERVICE,
+                MIN_NANO_ENTITY, MAX_NANO_ENTITY,
+                MIN_METHOD, MAX_METHOD);
         this.microservices = modelGenerator.generateServiceCutterModel().getServices();
         this.methods = modelGenerator.generateMethodModel().getMethods();
         init();
@@ -123,6 +126,7 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
     @Override
     public StepReply<GeneralState> step(Integer action) {
         int reward = 0;
+        action %= microservices.length;
         assignedMicroservice[step] = microservices[action];
         Method method = methods[step];
         Set<String> methodNE = new HashSet<>(method.getNanoentities().length);

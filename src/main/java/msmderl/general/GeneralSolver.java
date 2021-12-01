@@ -59,7 +59,7 @@ public class GeneralSolver {
     private static void solveRealProblem(Microservice[] microservices, Method[] methods) throws Exception {
         GeneralMDP mdp2 = new GeneralMDP(microservices, methods);
 
-        DQNPolicy<GeneralState> pol2 = loadPreviousAgent();
+        DQNPolicy<GeneralState> pol2 = loadPreviousAgent(microservices.length);
 
         playByStep(mdp2, pol2);
     }
@@ -69,8 +69,8 @@ public class GeneralSolver {
         mdp.printFinalResult();
     }
 
-    private static DQNPolicy<GeneralState> loadPreviousAgent() throws IOException {
-        System.out.println(new File("tmp/General").getAbsolutePath());
-        return DQNPolicy.load("tmp/General");
+    private static DQNPolicy<GeneralState> loadPreviousAgent(int msNum) throws IOException {
+        System.out.println(new File("trained/General " + msNum).getAbsolutePath());
+        return DQNPolicy.load("trained/General " + msNum);
     }
 }
