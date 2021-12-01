@@ -8,7 +8,6 @@ import msmderl.data.MicroserviceModel;
 import org.deeplearning4j.rl4j.learning.configuration.QLearningConfiguration;
 import org.deeplearning4j.rl4j.learning.sync.qlearning.discrete.QLearningDiscreteDense;
 import org.deeplearning4j.rl4j.mdp.MDP;
-import org.deeplearning4j.rl4j.network.configuration.DQNDenseNetworkConfiguration;
 import org.deeplearning4j.rl4j.policy.DQNPolicy;
 import org.deeplearning4j.rl4j.space.DiscreteSpace;
 
@@ -23,18 +22,15 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 
-public class IndividualApproach {
+public class IndividualApproachWithTransfer {
 
     private static QLearningConfiguration QL =
         QLearningConfiguration.builder()
             .maxEpochStep(Integer.MAX_VALUE)
-            .maxStep(10 * 1000)
+            .maxStep(2 * 1000)
             .gamma(0.1)
             .rewardFactor(0.9)
             .build();
-
-    private static DQNDenseNetworkConfiguration NET =
-        DQNDenseNetworkConfiguration.builder().build();
 
     public static void main(String[] args) throws Exception {
 
@@ -53,7 +49,7 @@ public class IndividualApproach {
 
         MDP<IndividualState, Integer, DiscreteSpace> mdp = new IndividualMDP(microservices, methods);
 
-        QLearningDiscreteDense<IndividualState> dql = defineTraining(mdp);
+        QLearningDiscreteDense<IndividualState> dql = defineTraining(mdp, loadGeneralAgent(microservices.length));
 
         dql.train();
 
@@ -97,8 +93,8 @@ public class IndividualApproach {
         pol.save("trained/Individual");
     }
 
-    private static QLearningDiscreteDense<IndividualState> defineTraining(MDP<IndividualState, Integer, DiscreteSpace> mdp) {
-        return new QLearningDiscreteDense<>(mdp, NET, QL);
+    private static QLearningDiscreteDense<IndividualState> defineTraining(MDP<IndividualState, Integer, DiscreteSpace> mdp, DQNPolicy<IndividualState> pol) {
+        return new QLearningDiscreteDense<>(mdp, pol.getNeuralNet(), QL);
     }
 
 
@@ -119,5 +115,10 @@ public class IndividualApproach {
     private static DQNPolicy<IndividualState> loadPreviousAgent() throws IOException {
         System.out.println(new File("trained/Individual").getAbsolutePath());
         return DQNPolicy.load("trained/Individual");
+    }
+
+    private static DQNPolicy<IndividualState> loadGeneralAgent(int msNum) throws IOException {
+        System.out.println(new File("trained/General " + msNum).getAbsolutePath());
+        return DQNPolicy.load("trained/General " + msNum);
     }
 }
