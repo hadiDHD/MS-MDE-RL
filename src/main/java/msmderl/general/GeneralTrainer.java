@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class GeneralTrainer {
 
-    public static int MAX_MICROSERVICE = GeneralMDP.MAX_MICROSERVICE;
-
     private static QLearningConfiguration qLearningConfiguration = QLearningConfiguration.builder()
             .maxEpochStep(Integer.MAX_VALUE)
             .maxStep(10 * 1000)
@@ -22,11 +20,11 @@ public class GeneralTrainer {
             .gamma(0.1)
             .build();
 
-    private static DQNDenseNetworkConfiguration dqnDenseNetworkConfiguration = DQNDenseNetworkConfiguration.builder().build();
+    public static DQNDenseNetworkConfiguration dqnDenseNetworkConfiguration = DQNDenseNetworkConfiguration.builder().build();
 
     public static void main(String[] args) throws Exception {
 
-        MDP<GeneralState, Integer, DiscreteSpace> mdp = new GeneralMDP();
+        GeneralMDP mdp = new GeneralMDP();
 
         QLearningDiscreteDense<GeneralState> dql = defineTraining(mdp);
 
@@ -34,13 +32,13 @@ public class GeneralTrainer {
 
         DQNPolicy<GeneralState> pol = dql.getPolicy();
 
-        saveForFutureReuse(pol);
+        saveForFutureReuse(pol, mdp.MAX_MICROSERVICE);
 
         mdp.close();
 
     }
 
-    private static void saveForFutureReuse(DQNPolicy<GeneralState> pol) throws IOException {
+    private static void saveForFutureReuse(DQNPolicy<GeneralState> pol, int MAX_MICROSERVICE) throws IOException {
         File file = new File("trained/General " + MAX_MICROSERVICE);
         file.mkdirs();
         file.delete();

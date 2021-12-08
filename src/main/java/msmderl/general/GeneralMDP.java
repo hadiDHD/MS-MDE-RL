@@ -27,27 +27,32 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
     private boolean isTraining;
     private int accReward = 0;
     private int nanoentities;
-    public static final int MAX_MICROSERVICE = 9;
-    public static final int MAX_NANO_ENTITY = MAX_MICROSERVICE * 10;
-    public static final int MAX_METHOD = MAX_MICROSERVICE * 10;
-    public static final int MIN_MICROSERVICE = MAX_MICROSERVICE;
-    public static final int MIN_NANO_ENTITY = 1;
-    public static final int MIN_METHOD = 1;
 
-    private static final int NON_MATCH_PENALTY = 10;
-    private static final int MATCH_REWARD = 20;
-    private static final int CONTEXT_BOUND_REWARD = 20;
-    private static final int CONTEXT_BOUND_PENALTY = 10;
-    private static final int OVERFILL_PENALTY = 5;
+    public int MAX_MICROSERVICE = 3;
+    public int MAX_NANO_ENTITY = MAX_MICROSERVICE * 10;
+    public int MAX_METHOD = MAX_MICROSERVICE * 10;
+    public int MIN_MICROSERVICE = MAX_MICROSERVICE;
+    public int MIN_NANO_ENTITY = 1;
+    public int MIN_METHOD = 1;
+
+    public int NON_MATCH_PENALTY = 10;
+    public int MATCH_REWARD = 20;
+    public int CONTEXT_BOUND_REWARD = 20;
+    public int CONTEXT_BOUND_PENALTY = 10;
+    public int OVERFILL_PENALTY = 5;
 
     public GeneralMDP() {
         isTraining = true;
+        initGenerator();
+        init();
+    }
+
+    public void initGenerator(){
         ModelGenerator modelGenerator = new ModelGenerator(MIN_MICROSERVICE, MAX_MICROSERVICE,
                 MIN_NANO_ENTITY, MAX_NANO_ENTITY,
                 MIN_METHOD, MAX_METHOD);
         this.microservices = modelGenerator.generateServiceCutterModel().getServices();
         this.methods = modelGenerator.generateMethodModel().getMethods();
-        init();
     }
 
     public GeneralMDP(Microservice[] microservices, Method[] methods) {
@@ -57,7 +62,7 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
         init();
     }
 
-    private void init() {
+    public void init() {
         step = 0;
         accReward = 0;
         nanoentities = nanoentitiesNum();
@@ -68,11 +73,13 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
         observationSpace = new ArrayObservationSpace<>(new int[]{MAX_MICROSERVICE * 3});
     }
 
-    public void printFinalResult() {
+    public String printFinalResult() {
+        StringBuilder sb = new StringBuilder();
         if (!isDone()) {
             System.out.println("Not Done!");
         }
         for (int i = 0; i < microservices.length; i++) {
+            sb.append(microservices[i].getName() + " : ");
             System.out.print(microservices[i].getName() + " : ");
             ArrayList<String> methodNames = new ArrayList<>();
             for (int j = 0; j < assignedMicroservice.length; j++) {
@@ -80,9 +87,11 @@ public class GeneralMDP implements MDP<GeneralState, Integer, DiscreteSpace> {
                     methodNames.add(methods[j].getName());
                 }
             }
+            sb.append(methodNames + "\n");
             System.out.println(methodNames);
         }
         System.out.println("AccReward :" + accReward);
+        return sb.toString();
     }
 
     @Override

@@ -47,11 +47,13 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
         observationSpace = new ArrayObservationSpace<>(new int[]{microservices.length * 3});
     }
 
-    public void printFinalResult() {
+    public String printFinalResult() {
+        StringBuilder sb = new StringBuilder();
         if (!isDone()) {
             System.out.println("Not Done!");
         }
         for (int i = 0; i < microservices.length; i++) {
+            sb.append(microservices[i].getName() + " : ");
             System.out.print(microservices[i].getName() + " : ");
             ArrayList<String> methodNames = new ArrayList<>();
             for (int j = 0; j < assignedMicroservice.length; j++) {
@@ -59,8 +61,10 @@ public class IndividualMDP implements MDP<IndividualState, Integer, DiscreteSpac
                     methodNames.add(methods[j].getName());
                 }
             }
+            sb.append(methodNames + "\n");
             System.out.println(methodNames);
         }
+        return sb.toString();
     }
 
     @Override
