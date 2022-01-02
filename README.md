@@ -33,21 +33,20 @@ By executing the main method of the GeneralSolver.java, the program will ask for
 By executing the main method of the GeneralTrainer.java, a new NNET will be trained.
 The number of training episodes, reward factor and gamma can be defined here.
 
-`private static QLearningConfiguration qLearningConfiguration = QLearningConfiguration.builder()`
-
-`.maxEpochStep(Integer.MAX_VALUE)`
-
-`.maxStep(10 * 1000)`
-
-`.rewardFactor(0.9)`
-
-`.gamma(0.1)`
-
-`.build();`
+```java
+private static QLearningConfiguration qLearningConfiguration = QLearningConfiguration.builder()
+ .maxEpochStep(Integer.MAX_VALUE)
+ .maxStep(10 * 1000)
+ .rewardFactor(0.9)
+ .gamma(0.1)
+ .build();
+```
 
 The number of microservices should be defined in the GeneralMDP.java file as the MAX_MICROSERVICE attribute.
 
-`public static final int MAX_MICROSERVICE = 9;`
+```java 
+public static final int MAX_MICROSERVICE = 9;
+```
 
 After the training, the NNET can be used as other pretrained NNETs.
 
